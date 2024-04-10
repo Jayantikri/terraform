@@ -10,7 +10,7 @@ resource "aws_instance" "ec1" {
     instance_type = "t2.micro"
     key_name = "sql"
     tags = {
-      Name = "ec1 ${count.index}"
+      Name = "ec1 ${count.index}" (or +count.index)
     }
     count = 2
   
