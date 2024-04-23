@@ -9,7 +9,7 @@ resource "aws_instance" "ec1" {
     ami = "ami-007020fd9c84e18c7"
     instance_type = "t2.micro"
     key_name = "myterrakey"
-    availability_zone = "us-east-1"
+    availability_zone = "us-east-1a"
     tags = {
       Name = "ec1"
     }
@@ -22,7 +22,7 @@ resource "aws_instance" "ec2" {
     ami = "ami-007020fd9c84e18c7"
     instance_type = "t2.micro"
     key_name = "myterrakey"
-    regionavailability_zone =  = "ap-southeast-2"
+    availability_zone =  = "ap-southeast-2a"
     tags = {
       Name = "ec2"
     }
