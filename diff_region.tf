@@ -4,12 +4,19 @@ provider "aws" {
     region = var.mumbai
   
 }
+provider "aws" {
+  access_key = var.access_key
+  secret_key = var.secret_key
+  alias = "east"
+  region = "us-east-1"
+  
+}
 
 resource "aws_instance" "ec1" {
     ami = "ami-007020fd9c84e18c7"
     instance_type = "t2.micro"
     key_name = "myterrakey"
-    availability_zone = "us-east-1a"
+    availability_zone = "ap-south-1b"
     tags = {
       Name = "ec1"
     }
@@ -19,16 +26,15 @@ resource "aws_instance" "ec1" {
   
 }
 resource "aws_instance" "ec2" {
-    ami = "ami-007020fd9c84e18c7"
+    provider = aws.east
+    ami = "ami-080e1f13689e07408"
     instance_type = "t2.micro"
-    key_name = "myterrakey"
-    availability_zone =  = "ap-southeast-2a"
+    
+    availability_zone =   "us-east-1a"
     tags = {
       Name = "ec2"
     }
-    
-    depends_on = [ aws_key_pair.awskey ]
-    security_groups = [ "mysecurity"] 
+     
 }
 variable "mumbai" {
   type = string
